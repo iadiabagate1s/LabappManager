@@ -62,7 +62,7 @@ img{
 #log2{
     position: absolute;
     margin: auto;
-    top: -176px;
+    top: -390px;
     
 }
 
@@ -80,4 +80,8 @@ img{
 }
 #allbtn{
     margin: auto;
+}
+
+.container-fluid{
+    max-width: 100%;
 }
