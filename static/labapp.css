@@ -57,11 +57,13 @@ img{
 }
 #loginform{
     position: relative;
+    margin: auto
 }
 #log2{
     position: absolute;
-   top: -176px;
-    right: 290px;
+    margin: auto;
+    top: -176px;
+    
 }
 
 #logmsg{
