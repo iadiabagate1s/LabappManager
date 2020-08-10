@@ -40,7 +40,7 @@ def adduser():
         
         return redirect(f'/user/home/{newuser.first_name}')
     
-    return render_template('adduser.html', form = form)
+    return render_template('templates/adduser.html', form = form)
 
 
 @app.route('/', methods = ['GET', 'POST'])
