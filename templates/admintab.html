@@ -1,0 +1,125 @@
+{% extends "loginhome.html" %}
+{%block title %} Admin Tab {%endblock%}
+  {%block content%}
+
+
+  <div class="container-fluid d-flex flex-row justify-content flex-wrap ">
+
+
+    <div id='techs' class="col-md-5">
+        <h3 class="text-center">Techs </h3>
+     
+        <table class="table">
+            <thead>
+              <tr>
+                
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Edit/Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for tech in users %}
+              <tr>
+                
+                <td><a href="/user/home/{{tech.first_name}}">{{tech.first_name}}</a></td>
+                <td>{{tech.last_name}}</td>
+                <td>{{tech.admin}}</td>
+                <td><button id="" data-id="{{tech.lab_id}}" data-last_name="{{tech.last_name}}"  class=" deleteuser btn btn-outline-danger">Delete</button> <a href="/user/edit/{{tech.first_name}}" class="btn btn-outline-warning mx-1">Edit</a></td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+          <a href="/addtech" class="btn btn-block btn-primary" >Add Tech</a>
+
+    </div>
+
+
+
+
+    <div id="projects" class="col-md-4 col-lg-7">
+        <h3 class="text-center"> Projects </h3>
+ 
+    <table class="table">
+        <thead>
+          <tr>
+            
+            <th scope="col">Quote #</th>
+            <th scope="col">Company</th>
+            <th scope="col">Sample Type</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Process</th>
+            <th scope="col">Edit/Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+          <tr>
+           
+            <td><a href="/projects/{{project.quote_id}}">{{project.quote_id}}</a></td>
+            <td>{{project.company}}</td>
+            <td>{{project.sample_type}}</td>
+            <td>{{project.num_samples}}</td>
+            <td>{{project.process}}</td>
+            <td><button data-id="{{project.quote_id}}" class="deleteproject btn btn-outline-danger">Delete</button> <a  href="/projects/edit/{{project.quote_id}}" class="btn btn-outline-warning mx-1">Edit</a></td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+      <a href="/createproj" class="addproject btn btn-block btn-primary" >Add Project</a>
+    </div>
+
+
+    <div id="tasks" class="col-md-4 col-lg">
+        <h3 class="text-center"> Tasks </h3>
+     
+
+         <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">Task ID</th>
+                <th scope="col">Quote #</th>
+                <th scope="col">tech assigned</th>
+                <th scope="col">Task</th>
+                <th scope="col">Completed</th>
+                <th scope="col">Edit/Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+              <tr>
+                <th scope="row"><a href="/tasks/{{task.task_id}}">{{task.task_id}}</a></th>
+                <td>{{task.quote_id}}</td>
+                <td>{{task.tech.last_name}}</td>
+                <td>{{task.task}}</td>
+                <td>{{task.complete}}</td>
+                
+                
+                <td><button id="deletetask" data-id="{{task.task_id}}" class="deletetask btn btn-outline-danger">Delete</button> <a href="/task/edit/{{task.task_id}}" class="btn btn-outline-warning mx-1">Edit</a></td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+     
+
+          <a href="/createtask" id='allbtn' class="align-content-center btn btn-block btn-primary w-50 text-center" >Add Task</a>
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+  
+
+
+
+
+
+  {%endblock%}

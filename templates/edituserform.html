@@ -1,0 +1,31 @@
+{% extends "loginhome.html" %}
+{%block title %} Edit User {%endblock%}
+  {%block content%}
+ 
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <h2 class="join-message">Edit Profile.</h2>
+      <form method="POST" id="user_form">
+        {{ form.hidden_tag() }}
+
+        {% for field in form if field.widget.input_type != 'hidden' and field.name != 'admin' %}
+          {% for error in field.errors %}
+            <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+          {{field.label}}
+          {{ field(placeholder=field.label.text, class="form-control") }}
+        {% endfor %}
+        {{form.admin.label}}
+        {{form.admin(class = 'form-control')}}
+
+      
+
+        <div class="edit-btn-area">
+          <button class="btn btn-success" type="submit">Save user!</button>
+          <a href="/user/home/{{user.first_name}}" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

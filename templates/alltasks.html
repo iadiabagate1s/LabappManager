@@ -1,0 +1,34 @@
+{% extends "loginhome.html" %}
+{%block title %} User Home {%endblock%}
+  {%block content%}
+
+<div class="col-md-12">
+  <h2 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> All Tasks</h2>
+  <table class="table table-sm table-hover table-striped">
+      <tbody id="compupdate">  
+        {% for task in alltasks %}  
+                                     
+          <tr>
+              <td>
+                  <strong><a href="/tasks/{{task.task_id}}">{{task.task_id}}</a></strong>  
+                  <p><strong>Tech :{{task.tech.first_name}}</strong><h6><strong>Quote_id: {{task.quote_id}} </strong>/ {{task.project.company}}</h6></p>
+                  <p>{{task.process}}</p>
+              </td>
+          </tr>
+          
+          {%endfor%}
+    
+      </tbody>
+  </table>
+</div>
+
+<form action="/createtask">
+    <button class="btn btn-outline-secondary" type="submit">Create Task</button>
+</form>
+
+
+
+
+
+
+  {%endblock%}

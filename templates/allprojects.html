@@ -1,0 +1,34 @@
+{% extends "loginhome.html" %}
+{%block title %} User Home {%endblock%}
+  {%block content%}
+<div class="col-md-12">
+  <h2 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> All Projects</h2>
+  <table class="table table-sm table-hover table-striped">
+      <tbody id="compupdate">  
+        {% for project in allprojects %}  
+                                     
+          <tr>
+              <td>
+                  <strong><a href="/projects/{{project.quote_id}}">Quote # {{project.quote_id}}</a></strong>  
+                  <p><strong>{{project.company}}</strong></p>
+                  <h6> number of samples {{project.num_samples}}</h6>
+              </td>
+          </tr>
+          
+          {%endfor%}
+    
+      </tbody>
+  </table>
+</div>
+  
+
+<form action="/createproj">
+    <button class="btn btn-outline-secondary" type="submit">Create Proj</button>
+</form>
+
+
+
+
+
+
+  {%endblock%}

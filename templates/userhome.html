@@ -1,0 +1,148 @@
+{% extends "loginhome.html" %}
+{%block title %} User Home {%endblock%}
+
+  {%block content%}
+
+
+
+<!-- --------------------------------------------------------------------------------------------- -->
+<div class="container">
+  <div class="row my-2">
+      <div class="col-lg-8 order-lg-2">
+          <ul class="nav nav-tabs">
+              <li class="nav-item">
+                  <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a href="" data-target="#messages" data-toggle="tab" class="nav-link">All your Tasks</a>
+              </li>
+              <li class="nav-item">
+                  <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit your Info</a>
+              </li>
+          </ul>
+          <div class="tab-content py-4">
+              <div class="tab-pane active" id="profile">
+                  <h5 class="mb-3"> Good Morning {{curruser.first_name}} {{curruser.last_name}}</h5>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <h6>Lab Tech</h6>
+                          <p>
+                              Company Name
+                          </p>
+            
+                      </div>
+                      <div class="col-md-6">
+                          <h6>Projects Wroking on</h6>
+                          {% for project in curruser.projects %}
+                          <a href="#" class="badge badge-dark badge-pill">{{project.quote_id}}/{{project.company}}</a>
+                          {%endfor%}
+                          <hr>
+                          <h6>Total Samples to process</h6>
+                          <span id="count" class="badge badge-warning"><i class="fa fa-user"></i> {{count}}</span>
+                          <h6>Total Samples Completed</h6>
+                          <span id="count" class="badge badge-primary"><i class="fa fa-user"></i> {{count2}}</span>
+                      </div>
+                      <div class="col-md-12">
+                          <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Company News/Updates/ Completed</h5>
+                          <table class="table table-sm table-hover table-striped">
+                              <tbody id="compupdate">  
+                                {% for task in curruser.task %}  
+                                {%if task.complete%}                                
+                                  <tr>
+                                      <td>
+                                          <strong>{{task.task_id}}</strong>  <strong>{{task.project.company}}</strong>
+                                          <p>{{task.task}}</p>
+                                      </td>
+                                  </tr>
+                                  {%endif%}
+                                  {%endfor%}
+                            
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+                  <!--------------------/row-->
+              </div>
+              <div class="tab-pane" id="messages">
+                  <table class="table table-hover table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Task ID</th>
+                        <th scope="col">Quote #</th>
+                        <th scope="col">Task</th>
+                        <th scope="col">completed</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in curruser.task %}
+                      <tr>
+                        <th scope="row"><a href="/tasks/{{task.task_id}}">{{task.task_id}}</a></th>
+                        <td>{{task.quote_id}}</td>
+                        <td>{{task.task}}</td>
+                        <td>{{task.complete}}</td>
+                        {%if not task.complete %}
+                        <td><button id="" data-id="{{task.task_id}}"  class="completetask btn btn-outline-success">Completed</button></td>
+                      {%endif%}
+                      </tr>
+                      {%endfor%}
+                    </tbody>
+                  </table>
+              </div>
+
+              <!-- form start  -->
+              <div class="tab-pane" id="edit">
+                  <form method = 'POST' action="/user/home/{{session['first_name']}}" role="form" >
+                 
+                      {{ form.hidden_tag() }}
+
+                      {% for field in form if field.widget.input_type != 'hidden' and field.name != 'admin' %}
+                      <div class="form-group row">
+                      {% for error in field.errors %}
+                      <span class="text-danger">{{ error }}</span>
+                      {% endfor %}
+                      {{field.label(class ='form-control-label')}}
+                      {{field(class = 'form-control')}}  
+                      </div>
+        
+                      {% endfor %}
+                      <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                        <div class="col-lg-9">
+                            <input type="reset" class="btn btn-secondary" value="Cancel">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </div>
+        
+                  </form>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4 order-lg-1 text-center">
+          <img src="{{curruser.avatar}}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+          </label>
+          <form action="/tasks">
+            <button class="btn btn-outline-primary btn-block my-1" type="submit">All Tasks</button>
+          </form>
+          <form action="/projects">
+            <button class=" btn btn-outline-secondary btn-block my-1" type="submit"> All Projects </button>
+          </form>
+      </div>
+      
+      
+      
+  </div>
+</div>
+<!-- --------------------------------------------------------------------------------------------- -->
+
+
+ 
+ 
+ 
+
+    {%endblock%}
+
+      
+
+
+

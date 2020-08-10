@@ -1,0 +1,77 @@
+{% extends "loginhome.html" %}
+{%block title %} User Home {%endblock%}
+  {%block content%}
+
+  <!-- <h1>Proj {{proj.quote_id}}</h1>
+<h2>company -{{proj.company}}</h2>
+<h2>num samples--{{proj.num_samples}}</h2>
+<h2> sample type-- {{proj.sample_type}}</h2>
+<h2>location --{{proj.freezer_name}}</h2>
+<h2>process--{{proj.process}}</h2>
+
+<h2>Due date</h2>
+<ul> Collabortors
+
+  {%for projin in proj.techs%}
+  <li>{{projin.first_name}}, {{projin.last_name}}</li>
+  {%endfor%}
+
+</ul> -->
+
+<div class="page-content page-container" id="page-content">
+  <div class="padding">
+      <div class="row container d-flex justify-content-center">
+          <div class="col-md-5">
+              <div class="card">
+                  <div class="card-body text-center">
+                      <div id="headprof"> <img src="/static/pictues /chromo1.jpeg" class="img-lg mb-4" alt="profile image">
+                          <h4>Quote# {{proj.quote_id}}</h4>
+                          <h6>{{proj.company}}</h6>
+                          <p class="text-muted mb-0"> </p>
+                      </div>
+                      <div class="border-top pt-3">
+                          <div class="row">
+                              <div class="col-4">
+                                  <h6>Location</h6>
+                                  <p>{{proj.freezer_name}}</p>
+                              </div>
+                              <div class="col-4">
+                                  <h6>Sample Type</h6>
+                                  <p>{{proj.sample_type}}</p>
+                              </div>
+                              <div class="col-4">
+                                  <h6>Number Samples</h6>
+                                  <p>{{proj.num_samples}}</p>
+                              </div>
+                              <div class="col-4">
+                                <h6>Other Contributors</h6>
+                                <ul> 
+                                  {%for projin in proj.techs%}
+                                  <li>{{projin.first_name}}, {{projin.last_name}}</li>
+                                  {%endfor%}
+                                </ul>
+                                
+                            </div>
+                            
+                          </div>
+                          <form action="/projects">
+                            <button class="btn btn-outline-secondary" type="submit">All Project Home</button>
+                        
+                        </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+  {%endblock%}

@@ -1,0 +1,74 @@
+{% extends "loginhome.html" %}
+{%block title %} User Home {%endblock%}
+  {%block content%}
+
+  <!-- <h1>Task {{task.task_id}}</h1>
+<h2>quote - {{task.quote_id}}</h2>
+<h2>company -{{task.project.company}}</h2>
+<h2>num samples--{{task.project.num_samples}}</h2>
+<h2> sample type-- {{task.project.sample_type}}</h2>
+<h2>location --{{task.project.freezer_name}}</h2>
+<h2>process--{{task.project.process}}</h2>
+<h2>kit --{{task.kit}}</h2>
+<h1>tech -- {{task.tech.first_name}}, {{task.tech.last_name}}- {{task.task}}</h1> -->
+
+<div class="page-content page-container" id="page-content">
+  <div class="padding">
+      <div class="row container d-flex justify-content-center">
+          <div class="col-md-5">
+              <div class="card">
+                  <div class="card-body text-center">
+                      <div> <img src="{{task.tech.avatar}}" class="img-lg mb-4" alt="profile image">
+                          <h4>Task # {{task.task_id}}</h4>
+                          <h5>Tech: {{task.tech.first_name}} {{task.tech.last_name}}</h5>
+                          <h6>Project Quote# {{task.quote_id}}</h6>
+                          <h6>From: {{task.project.company}}</h6>
+                          
+                          <p class="text-muted mb-0"> {{task.kit}}</p>
+                      </div>
+                      <p class="mt-2 card-text"> {{task.project.process}}</p> 
+                      <p class="mt-2 card-text"> {{task.task}}</p> 
+                      <div class="border-top pt-3">
+                          <div class="row">
+                              <div class="col-4">
+                                  <h6>Sample Location</h6>
+                                  <p>{{task.project.freezer_name}}</p>
+                              </div>
+                              <div class="col-4">
+                                <h6>Number Of Samples</h6>
+                                <p>{{task.project.num_samples}}</p>
+                            </div>
+                              <div class="col-4">
+                                  <h6>Sample Type</h6>
+                                  <p>{{task.project.sample_type}}</p>
+                              </div>
+                              <div class="col-4">
+                                <h6>Completed</h6>
+                                <p>{{task.complete}}</p>
+                                {%if not task.complete%}
+                                <a   data-id="{{task.task_id}}" class="completetask btn btn-sm btn-warning">complete</a>
+                                {%endif%}
+                            </div>
+                            
+                          </div>
+                          <form action="/tasks">
+                            <button class="btn btn-outline-primary" type="submit">All Task Home</button>
+                        
+                        </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+  {%endblock%}
