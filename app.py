@@ -1,10 +1,9 @@
 
-import os
 from flask import Flask, request, render_template, redirect, flash, session, jsonify 
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db,Tech, Project, Task ,Freezer
 from forms import LoginForm, Register, Tasksform, Projform, Edituser
-
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgres:///labmanager')
