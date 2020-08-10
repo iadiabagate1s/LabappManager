@@ -1,3 +1,5 @@
+
+import os
 from flask import Flask, request, render_template, redirect, flash, session, jsonify 
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db,Tech, Project, Task ,Freezer
@@ -8,7 +10,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///labmanager'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
-app.config['SECRET_KEY']='malachixxl'
+app.config['SECRET_KEY']=os.environ.get('SECRET_KEY','malachixxl')
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 connect_db(app)
