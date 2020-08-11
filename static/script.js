@@ -1,7 +1,8 @@
-window.addEventListener('DOMContentLoaded', (event) =>{
-    alert('Log in as an Admin w/  name: admin  lab id: 123456')
 
-})
+let login = document.querySelector("#log2")
+login.onload( alert('log in as an admin using last-name: admin   lab-id: 123456 '))
+
+
 
 //on click delete a user .. from DATABASE and remove element from the DOM
 $('.deleteuser').on('click',async function(e){
