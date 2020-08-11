@@ -65,7 +65,9 @@ def homelogin():
                 session['last_name'] = currentuser.last_name
                 session['admin'] = currentuser.admin
                 
+                
                 return redirect(f"/user/home/{currentuser.first_name}")
+    flash ("Sign in using last_name : admin  Lab_id: 123456 ")
     
     return render_template('Loginhome.html', form = form)
 

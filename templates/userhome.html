@@ -20,7 +20,7 @@
                   <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit your Info</a>
               </li>
           </ul>
-          <div class="tab-content py-4">
+          <div class="tab-content py-4 ">
               <div class="tab-pane active" id="profile">
                   <h5 class="mb-3"> Good Morning {{curruser.first_name}} {{curruser.last_name}}</h5>
                   <div class="row">
@@ -31,7 +31,7 @@
                           </p>
             
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-6 border">
                           <h6>Projects Wroking on</h6>
                           {% for project in curruser.projects %}
                           <a href="#" class="badge badge-dark badge-pill">{{project.quote_id}}/{{project.company}}</a>
@@ -42,7 +42,7 @@
                           <h6>Total Samples Completed</h6>
                           <span id="count" class="badge badge-primary"><i class="fa fa-user"></i> {{count2}}</span>
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-12 border">
                           <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Company News/Updates/ Completed</h5>
                           <table class="table table-sm table-hover table-striped">
                               <tbody id="compupdate">  

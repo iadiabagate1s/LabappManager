@@ -51,7 +51,11 @@
         </div>
       </nav>
 
+
+
    {%block content%}
+
+  
 <div id="contall" class="">
 
   <div class="slisli container my-1" justify-content-center">
@@ -87,14 +91,19 @@
   
   </div>
     
-  
+ 
   
   
   
   
   <div id="loginform" class="container-fluid row justify-content-md-center">
+   
     <div id="log2" class="col-md-7 col-lg-5">
+     
       <h2 id="logmsg" class="join-message text-center ">Log in</h2>
+      {% for msg in get_flashed_messages()%}
+      <p class="msgflash text-center">{{msg}}</p>
+      {%endfor%}
       <form method="POST" id="user_form">
         {{ form.hidden_tag() }}
   
@@ -102,8 +111,10 @@
           {% for error in field.errors %}
             <span class="text-danger">{{ error }}</span>
           {% endfor %}
-          {{ field(placeholder=field.label.text, class="form-control") }}
-        {% endfor %}
+          {% endfor %}
+          {{ form.last_name(placeholder='admin', value='admin' ,class="form-control my-1") }}
+          {{ form.lab_id(placeholder='123456', value='123456', class="form-control my-1") }}
+       
   
         <button class="btn btn-success btn-lg btn-block">Sign In!</button>
       </form>
